@@ -2,29 +2,25 @@
 
 const botao = $("#btn");
 const color = $(".color");
-//let currentColor = $(".color").css("background-color");
-let colors = ["red", "green"];//, "pink", "orange", "black", "yellow", "brown"];
+let currentColor = $(".color").css("background-color");
+let colors = ["red", "green", "pink", "orange", "black", "yellow", "brown", "gray", "purple", "blue"];
 let randomColor;
-
 
 //CHAMANDO FUNÇÕES
 
-botao.on("click", changeColor);
+botao.on("click", findingRandomColor);
 
 //DECLARANDO FUNÇÕES
 
 function findingRandomColor() {
     randomColor = Math.floor(Math.random() * colors.length);
-    //if (currentColor == randomColor) {
-        //randomColor = Math.floor(Math.random() * colors.length) + 1;
-    //}
-    console.log(colors);
-    //console.log(currentColor);
+    while (colors[randomColor] == currentColor) {
+        randomColor = Math.floor(Math.random() * colors.length);
+    }
+    changeColor();
 }
 
 function changeColor() {
-    findingRandomColor();
     color.css("background-color", colors[randomColor]);
-    //currentColor = colors[randomColor];
-    console.log(colors[randomColor]);
+    currentColor = colors[randomColor]; 
 }
